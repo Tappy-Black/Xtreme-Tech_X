@@ -1,53 +1,46 @@
-
-const { cmd } = require("../command");
-const moment = require("moment");
-
-let botStartTime = Date.now(); // Enregistrement de l'heure de démarrage du bot
-const ALIVE_IMG = "https://files.catbox.moe/3hrxbh.jpg"; // Assurez-vous que cette URL est valide
+const { cmd, commands } = require('../command');
+const os = require("os");
+const { runtime } = require('../lib/functions');
 
 cmd({
     pattern: "alive",
-    desc: "Check if the bot is active.",
-    category: "info",
-    react: "🤖",
+    alias: ["av", "runtime", "uptime"],
+    desc: "Check uptime and system status",
+    category: "main",
+    react: "📟",
     filename: __filename
-}, async (conn, mek, m, { reply, from }) => {
+},
+async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
     try {
-        const pushname = m.pushName || "User"; // Nom de l'utilisateur ou valeur par défaut
-        const currentTime = moment().format("HH:mm:ss");
-        const currentDate = moment().format("dddd, MMMM Do YYYY");
+        // Get system info
+        const platform = "Heroku Platform"; // Fixed deployment platform
+        const release = os.release(); // OS version
+        const cpuModel = os.cpus()[0].model; // CPU info
+        const totalMem = (os.totalmem() / 1024 / 1024).toFixed(2); // Total RAM in MB
+        const usedMem = (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2); // Used RAM in MB
 
-        const runtimeMilliseconds = Date.now() - botStartTime;
-        const runtimeSeconds = Math.floor((runtimeMilliseconds / 1000) % 60);
-        const runtimeMinutes = Math.floor((runtimeMilliseconds / (1000 * 60)) % 60);
-        const runtimeHours = Math.floor(runtimeMilliseconds / (1000 * 60 * 60));
-
-        const formattedInfo = `
+        // Stylish and detailed system status message
+        const status = `
 ╭─❍ *𝕏Ե®em£~Ե𝖊𝖈𝖍_𝕏 Status* ❍─╮
-│  
-│  🧑🏻‍💻 ʜɪ: *${pushname}*
-│  🕒 ᴛɪᴍᴇ: *${currentTime}*
-│  📅 ᴅᴀᴛᴇ: *${currentDate}*
-│  ⏳ ᴜᴘᴛɪᴍᴇ: *${runtime}*
+│ 
+│  ⭐ ᴏᴡɴᴇʀ* : *ʙʟᴀᴄᴋ-ᴛᴀᴘᴘʏ*
+│  🧑🏻‍💻 ʜɪ: *xᴛʀᴇᴍᴇ-ᴛᴇᴄʜ_x ᴏɴ ʙᴏᴀʀᴅ*
+│  🧬 ᴅᴇᴘʟᴏʏᴇᴅ ᴏɴ* : *${platform}*
+│  🖥️ ʀᴀᴍ ᴜsᴀɢᴇ* : *${usedMem}MB / ${totalMem}MB*
+│  ⏳ ᴜᴘᴛɪᴍᴇ* : *${runtime(process.uptime())}*
 │  ♻️ ꜱᴛᴀᴛᴜꜱ: ʙᴏᴛ ɪꜱ ᴀʟɪᴠᴇ
 │  ⚙ ᴍᴏᴅᴇ: *${config.MODE}*
 │  ✨ ᴠᴇʀsɪᴏɴ: *4.0.0 Mᴇᴛᴀ*
 ╰───────────────❍
 
 ✅ *Xtreme-Tech_X is online and operational!*
-🔧 *System running smoothly!*
-        `.trim();
+🔧 *System running smoothly!*`;
 
-        // Vérifier si l'image est définie
-        if (!ALIVE_IMG || !ALIVE_IMG.startsWith("http")) {
-            throw new Error("Invalid ALIVE_IMG URL. Please set a valid image URL.");
-        }
-
-        // Envoyer le message avec image et légende
-        await conn.sendMessage(from, {
-            image: { url: ALIVE_IMG }, // Assurez-vous que l'URL est valide
-            caption: formattedInfo,
-            contextInfo: { 
+        // Send image + caption + audio combined
+        await conn.sendMessage(from, { 
+            image: { url: `https://files.catbox.moe/3hrxbh.jpg` },  
+            caption: status,
+            contextInfo: {
                 mentionedJid: [m.sender],
                 forwardingScore: 999,
                 isForwarded: true,
@@ -59,17 +52,15 @@ cmd({
             }
         }, { quoted: mek });
 
-    } catch (error) {
-        console.error("Error in alive command: ", error);
-        
-        // Répondre avec des détails de l'erreur
-        const errorMessage = `
-❌ An error occurred while processing the alive command.
-🛠 *Error Details*:
-${error.message}
+        // Attach audio within the same "quoted" message for grouping
+        await conn.sendMessage(from, { 
+            audio: { url: 'https://files.catbox.moe/ddmjyy.mp3' },
+            mimetype: 'audio/mp4',
+            ptt: true 
+        }, { quoted: mek });
 
-Please report this issue or try again later.
-        `.trim();
-        return reply(errorMessage);
+    } catch (e) {
+        console.error("Error in alive command:", e);
+        reply(`🚨 *An error occurred:* ${e.message}`);
     }
 });
