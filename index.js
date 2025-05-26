@@ -128,7 +128,7 @@ const port = process.env.PORT || 9090;
 ╰─🛠️ *Prefix:* \`${prefix}\`
 
 > _© MADE BY Ⴊl𐌀Ꮳk𐌕𐌀ႲႲჄ_`;
-    conn.sendMessage(conn.user.id, { image: { url: `https://cdn.ironman.my.id/i/2du3i5.jpg` }, caption: up })
+    conn.sendMessage(conn.user.id, { image: { url: `https://files.catbox.moe/3hrxbh.jpg` }, caption: up })
   }
   })
   conn.ev.on('creds.update', saveCreds)
