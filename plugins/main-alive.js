@@ -16,7 +16,7 @@ async (conn, mek, m, { from, sender, reply }) => {
         const status = `
 ╭─❍ *@𝕏Ե®em£~Ե𝖊𝖈𝖍_𝕏 Status@* ❍─╮
 │  
-│  🧑🏻‍💻 ʜɪ: *${pushname}*
+│  🧑🏻‍💻 ʜɪ: *Xtreme-Tech_X on Board*
 │  🕒 ᴛɪᴍᴇ: *${currentTime}*
 │  📅 ᴅᴀᴛᴇ: *${currentDate}*
 │  ⏳ ᴜᴘᴛɪᴍᴇ: *${runtime}*
