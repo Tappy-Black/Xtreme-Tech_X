@@ -30,7 +30,7 @@ cmd({
   on: "body"
 }, async (conn, mek, m, { from, isOwner }) => {
   try {
-    if (config.ALWAYS_ONLINE === "true") {
+    if (config.ALWAYS_ONLINE === "false") {
       // Always Online Mode: Bot always appears online (double tick)
       await conn.sendPresenceUpdate("available", from);
     } else {
@@ -53,7 +53,7 @@ cmd({
   on: "body"
 }, async (conn, mek, m, { from, isOwner }) => {
   try {
-    if (config.ALWAYS_ONLINE === "true") {
+    if (config.ALWAYS_ONLINE === "false") {
       // Public Mode + Always Online: Always show as online
       await conn.sendPresenceUpdate("available", from);
     } else if (config.PUBLIC_MODE === "true") {
