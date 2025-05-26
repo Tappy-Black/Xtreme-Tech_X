@@ -21,20 +21,18 @@ async (conn, mek, m, { from, reply }) => {
         const repoData = await response.json();
 
         // Format 1: Classic Box
-        const style1 = `╭────✧〈『 ${config.BOT_NAME} REPO 』 〉 ✧───◆
-┴╭──────────────────๏
-│┃★├─
-│┃★├─📦 *Repository*: ${repoData.name}
-│┃★├─👑 *Owner*: ${repoData.owner.login}
-│┃★├─⭐ *Stars*: ${repoData.stargazers_count}
-│┃★├─⑂ *Forks*: ${repoData.forks_count}
-│┃★├─🔗 *URL*: ${repoData.html_url}
-│┃★├─
-│┃★├─📝 *Description*:
-│┃★├─${repoData.description || 'No description'}
-│┃★├─
-┬╰──────────────────๏
-╰─────···▸Sʜᴀᴅᴏᴡ-Xᴛᴇᴄʜ··────◆
+        const style1 = `╭───『 ${config.BOT_NAME} REPO 』───⳹
+│
+│ 📦 *Repository*: ${repoData.name}
+│ 👑 *Owner*: ${repoData.owner.login}
+│ ⭐ *Stars*: ${repoData.stargazers_count}
+│ ⑂ *Forks*: ${repoData.forks_count}
+│ 🔗 *URL*: ${repoData.html_url}
+│
+│ 📝 *Description*:
+│ ${repoData.description || 'No description'}
+│
+╰────────────────⳹
 > ${config.DESCRIPTION}`;
 
         // Format 2: Minimalist
