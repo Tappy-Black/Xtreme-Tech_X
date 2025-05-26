@@ -1,40 +1,26 @@
-const { cmd } = require("../command");
-const config = require("../config");
-const moment = require("moment");
-
-const ALIVE_IMG = "https://files.catbox.moe/3hrxbh.jpg;
-let botStartTime = Date.now();
+const { cmd, commands } = require('../command');
+const os = require("os");
+const { runtime } = require('../lib/functions');
 
 cmd({
     pattern: "alive",
-    desc: "Check if the bot is active.",
+    alias: ["av", "runtime", "uptime"],
+    desc: "Check uptime and system status",
     category: "main",
-    react: "📸",
+    react: "📟",
     filename: __filename
-}, async (conn, mek, m, { reply, from }) => {
+},
+async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
     try {
-        const pushname = m.pushName || "User";
-        const currentTime = moment().format("HH:mm:ss");
-        const currentDate = moment().format("dddd, MMMM Do YYYY");
+        // Get system info
+        const platform = "Heroku Platform"; // Fixed deployment platform
+        const release = os.release(); // OS version
+        const cpuModel = os.cpus()[0].model; // CPU info
+        const totalMem = (os.totalmem() / 1024 / 1024).toFixed(2); // Total RAM in MB
+        const usedMem = (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2); // Used RAM in MB
 
-        const ms = Date.now() - botStartTime;
-        const runtime = [
-            Math.floor(ms / (1000 * 60 * 60)),
-            Math.floor((ms / (1000 * 60)) % 60),
-            Math.floor((ms / 1000) % 60),
-        ].map((v) => v.toString().padStart(2, '0')).join(":");
-
-        const toTinyCap = (text) =>
-            text.split("").map(c => {
-                const map = { a:'ᴀ', b:'ʙ', c:'ᴄ', d:'ᴅ', e:'ᴇ', f:'ғ', g:'ɢ',
-                    h:'ʜ', i:'ɪ', j:'ᴊ', k:'ᴋ', l:'ʟ', m:'ᴍ', n:'ɴ',
-                    o:'ᴏ', p:'ᴘ', q:'ǫ', r:'ʀ', s:'s', t:'ᴛ', u:'ᴜ',
-                    v:'ᴠ', w:'ᴡ', x:'x', y:'ʏ', z:'ᴢ' };
-                return map[c.toLowerCase()] || c;
-            }).join("");
-
-        const msg = `
-╭─❍ *${toTinyCap("𝕏Ե®em£~Ե𝖊𝖈𝖍_𝕏 Status")}* ❍─╮
+        // Stylish and detailed system status message
+        const status = `╭─❍ *${toTinyCap("𝕏Ե®em£~Ե𝖊𝖈𝖍_𝕏 Status")}* ❍─╮
 │  
 │  🧑🏻‍💻 ʜɪ: *${pushname}*
 │  🕒 ᴛɪᴍᴇ: *${currentTime}*
@@ -46,12 +32,12 @@ cmd({
 ╰───────────────❍
 
 ✅ *Xtreme-Tech_X is online and operational!*
-🔧 *System running smoothly!*
-        `.trim();
+🔧 *System running smoothly!*`;
 
-        await conn.sendMessage(from, {
-            image: { url: ALIVE_IMG },
-            caption: msg,
+        // Send image + caption + audio combined
+        await conn.sendMessage(from, { 
+            image: { url: `https://files.catbox.moe/yd9bnm.jpg` },  
+            caption: status,
             contextInfo: {
                 mentionedJid: [m.sender],
                 forwardingScore: 999,
@@ -64,8 +50,15 @@ cmd({
             }
         }, { quoted: mek });
 
-    } catch (error) {
-        console.error("Error in alive command:", error);
-        return reply(`❌ Error in alive command:\n${error.message}`);
+        // Attach audio within the same "quoted" message for grouping
+        await conn.sendMessage(from, { 
+            audio: { url: 'https://files.catbox.moe/jgrfm3.mp3' },
+            mimetype: 'audio/mp4',
+            ptt: true 
+        }, { quoted: mek });
+
+    } catch (e) {
+        console.error("Error in alive command:", e);
+        reply(`🚨 *An error occurred:* ${e.message}`);
     }
 });
