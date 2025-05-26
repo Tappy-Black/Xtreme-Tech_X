@@ -30,17 +30,24 @@ async (conn, mek, m, { from }) => {
         // Send the owner contact message with image and audio
         await conn.sendMessage(from, {
             image: { url: 'https://files.catbox.moe/yd9bnm.jpg' }, // Image URL from your request
-            caption: `╭────✧〈『 ${config.BOT_NAME} 』 〉 ✧───◆
-┴╭──────────────────๏
-│┃★├─
-│┃★├─• *Here is the owner details*
-│┃★├─• *Name* - ${ownerName}
-│┃★├─• *Number* ${ownerNumber}
-│┃★├─• *Version*: 2.0.0 Beta
-│┃★├─
-┬╰──────────────────๏
-╰─────···▸𝕏Ե®em£~Ե𝖊𝖈𝖍_𝕏··────◆
-> © Pᴏᴡᴇʀᴇᴅ Bʏ 𝕏Ե®em£~Ե𝖊𝖈𝖍_𝕏`, // Display the owner's details
+            caption: `╭─⌈ *𝗫𝗧𝗥𝗘𝗠𝗘-𝗧𝗘𝗖𝗛-𝗫 𝗗𝗘𝗩𝗘𝗟𝗢𝗣𝗘𝗥* ⌋──
+│
+│ 👋 Hello *${name}*,
+│
+│ 🤖 I’m *Xtreme-Tech_X owner*, a multi-functional
+│    WhatsApp Bot built to assist you!
+│
+│ 👨‍💻 *OWNER DETAILS:*
+│ ───────────────
+│ 🧠 *Name* : Black-Tappy 
+│ 🕯️ *Age* : +20
+│ ☎️ *Contact* : wa.me/+254759000340
+│ ▶️ *YouTube* : Black-Tappy
+│    https://youtube.com/@BlackTappg
+│
+│ ⚡ Powered by *Black-Tappy*
+│
+╰───────────────`, // Display the owner's details
             contextInfo: {
                 mentionedJid: [`${ownerNumber.replace('+', '')}@s.whatsapp.net`], 
                 forwardingScore: 999,
@@ -55,7 +62,7 @@ async (conn, mek, m, { from }) => {
 
         // Send audio as per your request
         await conn.sendMessage(from, {
-            audio: { url: 'https://files.catbox.moe/jgrfm3.mp3' }, // Audio URL
+            audio: { url: 'https://files.catbox.moe/ddmjyy.mp3' }, // Audio URL
             mimetype: 'audio/mp4',
             ptt: true
         }, { quoted: mek });
