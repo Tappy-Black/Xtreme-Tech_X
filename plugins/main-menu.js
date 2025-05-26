@@ -1,10 +1,10 @@
-const config = require('../settings')
+const config = require('../config')
 const { cmd, commands } = require('../command');
 const os = require("os")
 const {runtime} = require('../lib/functions')
 const axios = require('axios')
 
-malvin({
+cmd({
     pattern: "menu",
     alias: ["allmenu","fullmenu"],
     use: '.menu2',
@@ -15,8 +15,7 @@ malvin({
 }, 
 async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
     try {
-        let dec = ` 
-╭──⭘💈 *${config.BOT_NAME}* 💈─·⭘
+        let dec = `╭──⭘💈 *${config.BOT_NAME}* 💈─·⭘
 ┆ ◦ 
 ┆ ◦ • 👑 Owner : *${config.OWNER_NAME}*
 ┆ ◦ • ⚙️ Prefix : *[${config.PREFIX}]*
