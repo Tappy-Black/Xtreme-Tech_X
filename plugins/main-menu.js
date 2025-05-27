@@ -27,7 +27,7 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 ┆ ◦ • 🚀 Version : *4.0.0 Mᴇᴛᴀ*
 ╰────────────────┈⊷
 
-> ᴍᴀʟᴠɪɴ xᴅ ᴄᴍᴅs ᴍᴇɴᴜ
+> xᴛʀᴇᴍᴇ-ᴛᴇᴄʜ_x ᴄᴍᴅs ᴍᴇɴᴜ
      
 ╭──·๏[📥 *ᴅᴏᴡɴʟᴏᴀᴅ ᴍᴇɴᴜ*📥]
 ┆ ◦ 
@@ -253,8 +253,8 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 ┆ ◦  📦 blackbox
 ┆ ◦  🌈 luma
 ┆ ◦  🎧 dj
-┆ ◦  👑 malvin
-┆ ◦  🤵 malvinai
+┆ ◦  👑 black
+┆ ◦  🤵 tappy
 ┆ ◦  🧠 gpt4
 ┆ ◦  🔍 bing
 ┆ ◦  🎨 imagine
