@@ -44,7 +44,7 @@ const {
   const path = require('path')
   const prefix = config.PREFIX
   
-  const ownerNumber = ['254759000340']
+  const ownerNumber = ['254732297194']
   
   const tempDir = path.join(os.tmpdir(), 'cache-temp')
   if (!fs.existsSync(tempDir)) {
@@ -113,23 +113,26 @@ const port = process.env.PORT || 9090;
   console.log('Plugins installed successful ✅')
   console.log('Bot connected to whatsapp ✅')
   
-  let up = `*✨ Hello, 𝕏Ե®em£~Ե𝖊𝖈𝖍_𝕏 Legend! ✨*
-
-╭─〔 *🤖 𝕏Ե®em£~Ե𝖊𝖈𝖍_𝕏* 〕  
-├─▸ *Ultrasonic Power and Infinite Speed!*  
-╰─➤ *Your New WhatsApp Sidekick is Here!*
-
-*❤️l Thank you for Choosing 𝕏Ե®em£~Ե𝖊𝖈𝖍_𝕏!*
-
-╭──〔 🔗 *Quick Links* 〕  
-├─ 📢 *Join Our Channel:*  
-│   Click [**Here**](https://whatsapp.com/channel/0029VasHgfG4tRrwjAUyTs10) to join!  
-├─ ⭐ *Give Us a Star:*  
-│   Star Us [**Here**](https://github.com/Tappy-Black/Xtreme-Tech_X)!  
-╰─🛠️ *Prefix:* \`${prefix}\`
-
-> _© MADE BY Ⴊl𐌀Ꮳk𐌕𐌀ႲႲჄ_`;
-    conn.sendMessage(conn.user.id, { image: { url: `https://files.catbox.moe/3hrxbh.jpg` }, caption: up })
+  let up = `╭══════════════⊷
+┃ ⚡𝗣𝗢𝗣𝗞𝗜𝗗 𝗫𝗧𝗘𝗖𝗛 𝗕𝗢𝗧
+╰══════════════⊷
+╭══════════════⊷
+┃ 🪆𝗥𝗘𝗣𝗢
+┃https://github.com/Popkiddevs/POPKID-XTECH
+╰══════════════⊷
+╭══════════════⊷
+┃ ❤️‍🩹𝗦𝗘𝗦𝗦𝗜𝗢𝗡 𝗜𝗗
+┃https://popkidpairfine.onrender.com/pair
+╰══════════════⊷
+╭══════════════⊷
+┃ ғᴏʀᴋ ᴀɴᴅ sᴛᴀʀ ᴏᴜʀ ʀᴇᴘᴏ
+┃ ғᴏʀ ᴄᴏᴜʀᴀɢᴇ ᴘʟᴇᴀsᴇ
+╰══════════════⊷
+╭══════════════⊷
+┃ 𝐏𝐎𝐏𝐊𝐈𝐃
+┃+254732297194
+╰══════════════⊷`;
+    conn.sendMessage(conn.user.id, { image: { url: `https://files.catbox.moe/e6rhto.jpg` }, caption: up })
   }
   })
   conn.ev.on('creds.update', saveCreds)
@@ -168,7 +171,7 @@ const port = process.env.PORT || 9090;
     }
   if (mek.key && mek.key.remoteJid === 'status@broadcast' && config.AUTO_STATUS_REACT === "true"){
     const jawadlike = await conn.decodeJid(conn.user.id);
-    const emojis = ['❤️', '💸', '😇', '🍂', '💥', '💯', '🔥', '💫', '💎', '💗', '🤍', '🖤', '👀', '🙌', '🙆', '🚩', '🥰', '💐', '😎', '🤎', '✅', '🫀', '🧡', '😁', '😄', '🌸', '🕊️', '🌷', '⛅', '🌟', '🗿', '🇵🇰', '💜', '💙', '🌝', '🖤', '🎎', '🎏', '🎐', '⚽', '🧣', '🌿', '⛈️', '🌦️', '🌚', '🌝', '🙈', '🙉', '🦖', '🐤', '🎗️', '🥇', '👾', '🔫', '🐝', '🦋', '🍓', '🍫', '🍭', '🧁', '🧃', '🍿', '🍻', '🎀', '🧸', '👑', '〽️', '😳', '💀', '☠️', '👻', '🔥', '♥️', '👀', '🐼'];
+    const emojis = ['❤️', '💸', '😇', '🍂', '💥', '💯', '🔥', '💫', '💎', '💗', '🤍', '🖤', '👀', '🙌', '🙆', '🚩', '🥰', '💐', '😎', '🤎', '✅', '🫀', '🧡', '😁', '😄', '🌸', '🕊️', '🌷', '⛅', '🌟', '🗿', '🇵🇰', '💜', '💙', '🌝', '🖤', '💚'];
     const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
     await conn.sendMessage(mek.key.remoteJid, {
       react: {
@@ -216,7 +219,7 @@ const port = process.env.PORT || 9090;
   conn.sendMessage(from, { text: teks }, { quoted: mek })
   }
   const udp = botNumber.split('@')[0];
-    const jawad = ('254759000340', '254756360306', '254105325084');
+    const jawad = ('254732297194', '254732297194', '254732297194');
     let isCreator = [udp, jawad, config.DEV]
 					.map(v => v.replace(/[^0-9]/g) + '@s.whatsapp.net')
 					.includes(mek.sender);
@@ -263,7 +266,7 @@ const port = process.env.PORT || 9090;
 				}
  //================ownerreact==============
     
-if (senderNumber.includes("254759000340") && !isReact) {
+if (senderNumber.includes("254732297194") && !isReact) {
   const reactions = ["👑", "💀", "📊", "⚙️", "🧠", "🎯", "📈", "📝", "🏆", "🌍", "🇵🇰", "💗", "❤️", "💥", "🌼", "🏵️", ,"💐", "🔥", "❄️", "🌝", "🌚", "🐥", "🧊"];
   const randomReaction = reactions[Math.floor(Math.random() * reactions.length)];
   m.react(randomReaction);
